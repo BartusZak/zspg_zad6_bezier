@@ -3,7 +3,7 @@
 #include <QDebug>
 
 Bezier::Bezier(void){
-    max_n_=4;
+    max_n_=64;
     n_=0;
 }
 
@@ -44,9 +44,9 @@ void Bezier::Draw(Program &prog){
     glDrawArrays(GL_LINE_STRIP, 0, n_);
     glDrawArrays(GL_POINTS, 0, n_);
 
-    if(n_ == static_cast<GLint>(max_n_)){
+    if(n_ >= 4){
         glUseProgram(prog.BezierProgram());
-        glDrawArrays(GL_LINES_ADJACENCY, 0, n_);
+        glDrawArrays(GL_LINE_STRIP_ADJACENCY, 0, n_);
     }
 
     glBindVertexArray(0);
