@@ -1,0 +1,1 @@
+# zspg_zad6_bezier
